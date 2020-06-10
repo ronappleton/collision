@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NunoMaduro\Collision\Contracts;
 
 use Facade\IgnitionContracts\Solution;
@@ -17,5 +15,5 @@ interface SolutionsRepository
      *
      * @return array<int, Solution>
      */
-    public function getFromThrowable(Throwable $throwable): array;
+    public function getFromThrowable(Throwable $throwable);
 }

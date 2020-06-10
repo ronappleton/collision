@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NunoMaduro\Collision;
 
 use NunoMaduro\Collision\Contracts\Handler as HandlerContract;
@@ -42,7 +40,7 @@ final class Provider implements ProviderContract
     /**
      * {@inheritdoc}
      */
-    public function register(): ProviderContract
+    public function register()
     {
         $this->run->pushHandler($this->handler)
             ->register();
@@ -53,7 +51,7 @@ final class Provider implements ProviderContract
     /**
      * {@inheritdoc}
      */
-    public function getHandler(): HandlerContract
+    public function getHandler()
     {
         return $this->handler;
     }

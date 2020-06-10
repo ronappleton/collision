@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Unit;
 
 use NunoMaduro\Collision\ConsoleColor;
@@ -20,13 +18,13 @@ use Whoops\Exception\Inspector;
 class WriterTest extends TestCase
 {
     /** @test */
-    public function it_respects_is_contract(): void
+    public function it_respects_is_contract()
     {
         $this->assertInstanceOf(WriterContract::class, new Writer());
     }
 
     /** @test */
-    public function it_gets_the_output(): void
+    public function it_gets_the_output()
     {
         $writer = new Writer(new NullSolutionsRepository(), $output = new ConsoleOutput());
 
@@ -34,7 +32,7 @@ class WriterTest extends TestCase
     }
 
     /** @test */
-    public function it_sets_the_output(): void
+    public function it_sets_the_output()
     {
         $writer = (new Writer())->setOutput($output = new ConsoleOutput());
 
@@ -42,7 +40,7 @@ class WriterTest extends TestCase
     }
 
     /** @test */
-    public function it_writes_the_exception(): void
+    public function it_writes_the_exception()
     {
         $inspector = new Inspector(HelloWorldFile1::say());
 
@@ -50,7 +48,7 @@ class WriterTest extends TestCase
 
         $result = <<<EOF
 
-   Tests\FakeProgram\FakeException 
+   Tests\FakeProgram\FakeException
 
   Fail description
 
@@ -80,7 +78,7 @@ EOF;
     }
 
     /** @test */
-    public function it_writes_details(): void
+    public function it_writes_details()
     {
         $inspector = new Inspector(HelloWorldFile1::say());
 
@@ -91,7 +89,7 @@ EOF;
 
         $result = <<<EOF
 
-   Tests\FakeProgram\FakeException 
+   Tests\FakeProgram\FakeException
 
   Fail description
 
@@ -119,7 +117,7 @@ EOF;
     }
 
     /** @test */
-    public function it_ignores_folders(): void
+    public function it_ignores_folders()
     {
         $inspector = new Inspector(HelloWorldFile1::say());
 
@@ -128,7 +126,7 @@ EOF;
 
         $result = <<<EOF
 
-   Tests\FakeProgram\FakeException 
+   Tests\FakeProgram\FakeException
 
   Fail description
 
@@ -143,7 +141,7 @@ EOF;
     }
 
     /** @test */
-    public function it_hides_editor(): void
+    public function it_hides_editor()
     {
         $inspector = new Inspector(HelloWorldFile1::say());
 
@@ -152,7 +150,7 @@ EOF;
 
         $result = <<<EOF
 
-   Tests\FakeProgram\FakeException 
+   Tests\FakeProgram\FakeException
 
   Fail description
 
@@ -171,7 +169,7 @@ EOF;
     }
 
     /** @test */
-    public function it_hides_trace(): void
+    public function it_hides_trace()
     {
         $inspector = new Inspector(HelloWorldFile1::say());
 
@@ -180,7 +178,7 @@ EOF;
 
         $result = <<<EOF
 
-   Tests\FakeProgram\FakeException 
+   Tests\FakeProgram\FakeException
 
   Fail description
 
@@ -204,7 +202,7 @@ EOF;
     }
 
     /** @test */
-    public function it_supports_renderless_contracts(): void
+    public function it_supports_renderless_contracts()
     {
         $inspector = new Inspector(HelloWorldFile4::say());
 

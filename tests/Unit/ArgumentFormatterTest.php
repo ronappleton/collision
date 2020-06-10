@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Unit;
 
 use NunoMaduro\Collision\ArgumentFormatter;
@@ -11,13 +9,13 @@ use PHPUnit\Framework\TestCase;
 class ArgumentFormatterTest extends TestCase
 {
     /** @test */
-    public function it_respects_is_contract(): void
+    public function it_respects_is_contract()
     {
         $this->assertInstanceOf(ArgumentFormatterContract::class, new ArgumentFormatter());
     }
 
     /** @test */
-    public function it_formats_a_string(): void
+    public function it_formats_a_string()
     {
         $argumentFormatter = new ArgumentFormatter();
 
@@ -29,7 +27,7 @@ class ArgumentFormatterTest extends TestCase
     }
 
     /** @test */
-    public function it_formats_a_array(): void
+    public function it_formats_a_array()
     {
         $argumentFormatter = new ArgumentFormatter();
 
@@ -41,7 +39,7 @@ class ArgumentFormatterTest extends TestCase
     }
 
     /** @test */
-    public function it_formats_a_object(): void
+    public function it_formats_a_object()
     {
         $argumentFormatter = new ArgumentFormatter();
 

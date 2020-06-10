@@ -1,33 +1,31 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Unit\Adapters;
 
 use NunoMaduro\Collision\Adapters\Phpunit\Printer;
+use NunoMaduro\Collision\Adapters\Phpunit\TestResult;
 use NunoMaduro\Collision\Exceptions\ShouldNotHappen;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestListener;
-use PHPUnit\Framework\TestResult;
 use Symfony\Component\Process\Process;
 
 class PhpunitTest extends TestCase
 {
     /** @test */
-    public function it_respects_is_contract(): void
+    public function it_respects_is_contract()
     {
         $this->assertInstanceOf(TestListener::class, new Printer());
     }
 
     /** @test */
-    public function it_is_a_printer(): void
+    public function it_is_a_printer()
     {
         $this->assertInstanceOf(Printer::class, new Printer());
     }
 
     /** @test */
-    public function it_do_not_handles_test_that_are_not_test_cases(): void
+    public function it_do_not_handles_test_that_are_not_test_cases()
     {
         $test = new class() implements Test {
             public function count()
@@ -35,7 +33,7 @@ class PhpunitTest extends TestCase
                 return 0;
             }
 
-            public function run(TestResult $result = null): TestResult
+            public function run(TestResult $result = null)
             {
                 // ..
             }
@@ -47,7 +45,7 @@ class PhpunitTest extends TestCase
     }
 
     /** @test */
-    public function it_has_tests(): void
+    public function it_has_tests()
     {
         $output = $this->runCollisionTests([
             '--exclude-group',
@@ -72,7 +70,7 @@ EOF,
     }
 
     /** @test */
-    public function it_has_custom_test_case_name(): void
+    public function it_has_custom_test_case_name()
     {
         $output = $this->runCollisionTests([
             '--group',
@@ -91,7 +89,7 @@ EOF,
     }
 
     /** @test */
-    public function it_has_recap(): void
+    public function it_has_recap()
     {
         $output = $this->runCollisionTests([
             '--exclude-group',
@@ -105,7 +103,7 @@ EOF,
     }
 
     /** @test */
-    public function it_has_failure(): void
+    public function it_has_failure()
     {
         $output = $this->runCollisionTests([], 1);
 
@@ -121,14 +119,14 @@ EOF,
      15▕     {
   ➜  16▕         $code
      17▕     }
-     18▕ 
+     18▕
      19▕     public function testBasicTest()
      20▕     {
 EOF
             , $output);
     }
 
-    private function runCollisionTests(array $arguments = [], int $exitCode = 0): string
+    private function runCollisionTests(array $arguments = [], $exitCode = 0)
     {
         $process = new Process(array_merge([
             './vendor/bin/phpunit',

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NunoMaduro\Collision;
 
 use NunoMaduro\Collision\Contracts\ArgumentFormatter as ArgumentFormatterContract;
@@ -87,6 +85,10 @@ final class Writer implements WriterContract
 
     /**
      * Creates an instance of the writer.
+     * @param SolutionsRepository|null $solutionsRepository
+     * @param OutputInterface|null $output
+     * @param ArgumentFormatterContract|null $argumentFormatter
+     * @param HighlighterContract|null $highlighter
      */
     public function __construct(
         SolutionsRepository $solutionsRepository = null,
@@ -142,7 +144,7 @@ final class Writer implements WriterContract
     /**
      * {@inheritdoc}
      */
-    public function showTrace(bool $show): WriterContract
+    public function showTrace($show): WriterContract
     {
         $this->showTrace = $show;
 
@@ -152,7 +154,7 @@ final class Writer implements WriterContract
     /**
      * {@inheritdoc}
      */
-    public function showTitle(bool $show): WriterContract
+    public function showTitle($show): WriterContract
     {
         $this->showTitle = $show;
 
@@ -162,7 +164,7 @@ final class Writer implements WriterContract
     /**
      * {@inheritdoc}
      */
-    public function showEditor(bool $show): WriterContract
+    public function showEditor($show): WriterContract
     {
         $this->showEditor = $show;
 
@@ -182,7 +184,7 @@ final class Writer implements WriterContract
     /**
      * {@inheritdoc}
      */
-    public function getOutput(): OutputInterface
+    public function getOutput()
     {
         return $this->output;
     }
@@ -190,7 +192,7 @@ final class Writer implements WriterContract
     /**
      * Returns pertinent frames.
      */
-    protected function getFrames(Inspector $inspector): array
+    protected function getFrames(Inspector $inspector)
     {
         return $inspector->getFrames()
             ->filter(
@@ -216,7 +218,7 @@ final class Writer implements WriterContract
     /**
      * Renders the title of the exception.
      */
-    protected function renderTitleAndDescription(Inspector $inspector): WriterContract
+    protected function renderTitleAndDescription(Inspector $inspector)
     {
         $exception = $inspector->getException();
         $message   = rtrim($exception->getMessage());
@@ -235,7 +237,7 @@ final class Writer implements WriterContract
     /**
      * Renders the solution of the exception, if any.
      */
-    protected function renderSolution(Inspector $inspector): WriterContract
+    protected function renderSolution(Inspector $inspector)
     {
         $throwable = $inspector->getException();
         $solutions = $this->solutionsRepository->getFromThrowable($throwable);
@@ -265,7 +267,7 @@ final class Writer implements WriterContract
      * Renders the editor containing the code that was the
      * origin of the exception.
      */
-    protected function renderEditor(Frame $frame): WriterContract
+    protected function renderEditor(Frame $frame)
     {
         $file = $this->getFileRelativePath((string) $frame->getFile());
 
@@ -283,7 +285,7 @@ final class Writer implements WriterContract
     /**
      * Renders the trace of the exception.
      */
-    protected function renderTrace(array $frames): WriterContract
+    protected function renderTrace(array $frames)
     {
         $vendorFrames = 0;
         $userFrames   = 0;
@@ -325,7 +327,7 @@ final class Writer implements WriterContract
      *
      * @return $this
      */
-    protected function render(string $message, bool $break = true): WriterContract
+    protected function render(string $message, bool $break = true)
     {
         if ($break) {
             $this->output->writeln('');
@@ -339,7 +341,7 @@ final class Writer implements WriterContract
     /**
      * Returns the relative path of the given file path.
      */
-    protected function getFileRelativePath(string $filePath): string
+    protected function getFileRelativePath(string $filePath)
     {
         $cwd = (string) getcwd();
 

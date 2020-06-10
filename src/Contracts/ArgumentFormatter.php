@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NunoMaduro\Collision\Contracts;
 
 /**
@@ -12,6 +10,10 @@ interface ArgumentFormatter
     /**
      * Formats the provided array of arguments into
      * an understandable description.
+     * @param array $arguments
+     * @param bool $recursive
+     *
+     * @return string
      */
-    public function format(array $arguments, bool $recursive = true): string;
+    public function format(array $arguments, $recursive = true);
 }

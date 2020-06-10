@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NunoMaduro\Collision\Contracts;
 
 /**
@@ -12,14 +10,14 @@ interface Provider
     /**
      * Registers the current Handler as Error Handler.
      *
-     * @return \NunoMaduro\Collision\Contracts\Provider
+     * @return Provider
      */
-    public function register(): Provider;
+    public function register();
 
     /**
      * Returns the handler.
      *
-     * @return \NunoMaduro\Collision\Contracts\Handler
+     * @return Handler
      */
-    public function getHandler(): Handler;
+    public function getHandler();
 }

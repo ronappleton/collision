@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Unit;
 
 use NunoMaduro\Collision\Contracts\Handler as HandlerContract;
@@ -14,13 +12,13 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 class HandlerTest extends TestCase
 {
     /** @test */
-    public function it_respects_is_contract(): void
+    public function it_respects_is_contract()
     {
         $this->assertInstanceOf(HandlerContract::class, new Handler());
     }
 
     /** @test */
-    public function it_handles_an_exception(): void
+    public function it_handles_an_exception()
     {
         $writerMock    = $this->createMock(WriterContract::class);
         $inspectorMock = $this->createMock(\Whoops\Exception\Inspector::class);
@@ -37,7 +35,7 @@ class HandlerTest extends TestCase
     }
 
     /** @test */
-    public function it_sets_the_output(): void
+    public function it_sets_the_output()
     {
         $writerMock = $this->createMock(WriterContract::class);
         $output     = new ConsoleOutput();
@@ -50,7 +48,7 @@ class HandlerTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_the_writer(): void
+    public function it_gets_the_writer()
     {
         $writer  = new Writer();
         $handler = new Handler($writer);

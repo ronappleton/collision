@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NunoMaduro\Collision\Contracts;
 
 /**
@@ -12,5 +10,5 @@ interface Highlighter
     /**
      * Highlights the provided content.
      */
-    public function highlight(string $content, int $line): string;
+    public function highlight($content, $line);
 }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NunoMaduro\Collision\Contracts;
 
 use Symfony\Component\Console\Output\OutputInterface;
@@ -15,14 +13,14 @@ interface Handler extends HandlerInterface
     /**
      * Sets the output.
      *
-     * @return \NunoMaduro\Collision\Contracts\Handler
+     * @return Handler
      */
-    public function setOutput(OutputInterface $output): Handler;
+    public function setOutput(OutputInterface $output);
 
     /**
      * Returns the writer.
      *
-     * @return \NunoMaduro\Collision\Contracts\Writer
+     * @return Writer
      */
-    public function getWriter(): Writer;
+    public function getWriter();
 }

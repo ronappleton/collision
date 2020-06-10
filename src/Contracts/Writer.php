@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of Collision.
  *
@@ -27,45 +25,50 @@ interface Writer
      *
      * @param string[] $ignore the regex expressions
      *
-     * @return \NunoMaduro\Collision\Contracts\Writer
+     * @return Writer
      */
-    public function ignoreFilesIn(array $ignore): Writer;
+    public function ignoreFilesIn(array $ignore);
 
     /**
      * Declares whether or not the Writer should show the trace.
      *
-     * @return \NunoMaduro\Collision\Contracts\Writer
+     * @param bool $show
+     * @return Writer
      */
-    public function showTrace(bool $show): Writer;
+    public function showTrace($show);
 
     /**
      * Declares whether or not the Writer should show the title.
      *
-     * @return \NunoMaduro\Collision\Contracts\Writer
+     * @param bool $show
+     * @return Writer
      */
-    public function showTitle(bool $show): Writer;
+    public function showTitle($show);
 
     /**
      * Declares whether or not the Writer should show the editor.
      *
-     * @return \NunoMaduro\Collision\Contracts\Writer
+     * @param bool $show
+     * @return Writer
      */
-    public function showEditor(bool $show): Writer;
+    public function showEditor($show);
 
     /**
      * Writes the details of the exception on the console.
+     * @param Inspector $inspector
      */
-    public function write(Inspector $inspector): void;
+    public function write(Inspector $inspector);
 
     /**
      * Sets the output.
      *
-     * @return \NunoMaduro\Collision\Contracts\Writer
+     * @return Writer
      */
-    public function setOutput(OutputInterface $output): Writer;
+    public function setOutput(OutputInterface $output);
 
     /**
      * Gets the output.
+     * @return OutputInterface
      */
-    public function getOutput(): OutputInterface;
+    public function getOutput();
 }
